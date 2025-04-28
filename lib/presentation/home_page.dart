@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/presentation/data_pelanggan_page.dart';
+import 'package:ucp_1/presentation/data_piket_page.dart';
 import 'package:ucp_1/presentation/login_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -46,9 +48,7 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     },
                     icon: const Icon(Icons.logout, color: Colors.white),
@@ -81,14 +81,28 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DataPiketPage(nama: nama),
+                                builder:
+                                    (context) => DataPiketPage(nama: nama),
                               ),
                             );
                           },
                         ),
                       ),
                       const SizedBox(width: 16),
-
+                      Expanded(
+                        child: MenuCard(
+                          icon: Icons.account_box,
+                          label: 'Data Pelanggan',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DataPelangganPage(),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                   
