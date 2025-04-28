@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/presentation/data_barang_page.dart';
 import 'package:ucp_1/presentation/data_pelanggan_page.dart';
 import 'package:ucp_1/presentation/data_piket_page.dart';
 import 'package:ucp_1/presentation/login_page.dart';
@@ -105,7 +106,20 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  
+                  const SizedBox(height: 16),
+                  MenuCard(
+                    icon: Icons.change_circle_outlined,
+                    label: 'Barang Masuk/Keluar',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DataBarangPage(),
+                        ),
+                      );
+                    },
+                    isFullWidth: true,
+                  ),
                 ],
               ),
             ),
