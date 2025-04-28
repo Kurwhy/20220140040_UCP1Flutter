@@ -33,6 +33,27 @@ class DetailPelangganPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            const SizedBox(height: 24),
+            const CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage('assets/images/why.png'),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              nama,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(email),
+            Text(noHp),
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
     );
   }
 }
