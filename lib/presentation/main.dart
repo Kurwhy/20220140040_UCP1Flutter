@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ucp_1/presentation/login_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LoginPage(),
+      home: const Login(),
     );
   }
 }
