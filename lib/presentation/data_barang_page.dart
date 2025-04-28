@@ -34,6 +34,7 @@ class _DataBarangPageState extends State<DataBarangPage> {
     'Stick Yogurt': 6000,
     'Cookies n Cream Pie': 15000,
   };
+
   void _submitData() {
     if (formKey.currentState!.validate() && selectedDate != null) {
       int jumlahBarang = int.tryParse(jumlahController.text) ?? 0;
@@ -257,6 +258,24 @@ class _DataBarangPageState extends State<DataBarangPage> {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 32),
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF343A7C),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    onPressed: _submitData,
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
                 ),
               ],
             ),
