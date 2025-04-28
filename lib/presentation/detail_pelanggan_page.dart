@@ -40,7 +40,7 @@ class DetailPelangganPage extends StatelessWidget {
             const SizedBox(height: 24),
             const CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage('assets/images/why.png'),
+              backgroundImage: AssetImage('assets/images/why.jpeg'),
             ),
             const SizedBox(height: 16),
             Text(

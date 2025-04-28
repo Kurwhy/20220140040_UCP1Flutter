@@ -224,7 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const Text("Sudah memiliki akun? Silahkan "),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pop(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const LoginPage(),

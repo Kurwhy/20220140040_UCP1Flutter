@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pop(
                         context,
                         MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
