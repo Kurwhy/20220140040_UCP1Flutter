@@ -83,3 +83,17 @@ class _DataBarangPageState extends State<DataBarangPage> {
     hargaController.dispose();
     super.dispose();
   }
+  
+  Future<void> _pickDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
