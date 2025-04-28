@@ -123,7 +123,100 @@ class _DataBarangPageState extends State<DataBarangPage> {
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
+              children: [
+                const Text('Tanggal Transaksi'),
+                const SizedBox(height: 8),
+                GestureDetector(
+                  onTap: _pickDate,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 16,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:
+                            selectedDate == null
+                                ? Color(0xFF343A7C)
+                                : Colors.grey,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.calendar_today, color: Colors.grey),
+                        const SizedBox(width: 12),
+                        Text(
+                          selectedDate != null
+                              ? DateFormat('dd-MM-yyyy').format(selectedDate!)
+                              : 'Tanggal Transaksi',
+                          style: TextStyle(
+                            color:
+                                selectedDate == null
+                                    ? Color(0xFF343A7C)
+                                    : Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Jenis Transaksi',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  items:
+                      jenisTransaksiList
+                          .map(
+                            (jenis) => DropdownMenuItem(
+                              value: jenis,
+                              child: Text(jenis),
+                            ),
+                          )
+                          .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedJenisTransaksi = value;
+                    });
+                  },
+                  validator:
+                      (value) => value == null ? 'Pilih jenis transaksi' : null,
+                ),
+                const SizedBox(height: 16),
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Jenis Barang',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  items:
+                      jenisBarangList
+                          .map(
+                            (barang) => DropdownMenuItem(
+                              value: barang,
+                              child: Text(barang),
+                            ),
+                          )
+                          .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedJenisBarang = value;
+                      if (value != null && hargaBarang.containsKey(value)) {
+                        hargaController.text = hargaBarang[value]!.toString();
+                      } else {
+                        hargaController.clear();
+                      }
+                    });
+                  },
+                  validator:
+                      (value) => value == null ? 'Pilih jenis barang' : null,
+                ),
+              ],
             ),
           ),
         ),
