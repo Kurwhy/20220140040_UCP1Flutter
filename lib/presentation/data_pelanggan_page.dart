@@ -18,7 +18,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-    void _resetForm() {
+  void _resetForm() {
     _formKey.currentState?.reset();
     _namaController.clear();
     _emailController.clear();
@@ -33,17 +33,33 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailPelangganPage(
-            nama: _namaController.text,
-            email: _emailController.text,
-            noHp: _noHpController.text,
-            alamat: _alamatController.text,
-            provinsi: _provinsiController.text,
-            kodePos: _kodePosController.text,
-          ),
+          builder:
+              (context) => DetailPelangganPage(
+                nama: _namaController.text,
+                email: _emailController.text,
+                noHp: _noHpController.text,
+                alamat: _alamatController.text,
+                provinsi: _provinsiController.text,
+                kodePos: _kodePosController.text,
+              ),
         ),
       );
     }
   }
 
+  String? _validateField(String? value, String fieldName) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName tidak boleh kosong';
+    }
+    if (fieldName == 'Email' && !value.contains('@')) {
+      return 'Format email tidak valid';
+    }
+    if (fieldName == 'No HP' && value.length < 10) {
+      return 'Nomor HP tidak valid';
+    }
+    if (fieldName == 'Kode Pos' && value.length != 5) {
+      return 'Kode Pos harus 5 digit';
+    }
+    return null;
+  }
 }
