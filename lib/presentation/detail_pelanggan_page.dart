@@ -89,5 +89,23 @@ class DetailPelangganPage extends StatelessWidget {
       ),
     );
   }
-  
+  Widget _buildInfoField({required String label, required String value}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        TextFormField(
+          initialValue: value,
+          enabled: false,
+          decoration: InputDecoration(
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
