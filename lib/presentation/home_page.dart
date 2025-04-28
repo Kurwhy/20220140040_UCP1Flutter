@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('assets/images/why.png'),
+                    backgroundImage: AssetImage('assets/images/why.jpeg'),
                   ),
                   const SizedBox(width: 16),
                   Column(
