@@ -51,6 +51,20 @@ class DetailPelangganPage extends StatelessWidget {
             Text(email),
             Text(noHp),
             const SizedBox(height: 24),
+            _buildInfoField(label: 'Alamat', value: alamat),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildInfoField(label: 'Provinsi', value: provinsi),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: _buildInfoField(label: 'Kode Pos', value: kodePos),
+                ),
+              ],
+            ),
+            const SizedBox(height: 60),
           ],
         ),
       ),
