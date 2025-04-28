@@ -34,3 +34,52 @@ class _DataBarangPageState extends State<DataBarangPage> {
     'Stick Yogurt': 6000,
     'Cookies n Cream Pie': 15000,
   };
+  void _submitData() {
+    if (formKey.currentState!.validate() && selectedDate != null) {
+      int jumlahBarang = int.tryParse(jumlahController.text) ?? 0;
+      int hargaSatuan = int.tryParse(hargaController.text) ?? 0;
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailBarangPage(
+            tanggal: selectedDate!,
+            jenisTransaksi: selectedJenisTransaksi!,
+            jenisBarang: selectedJenisBarang!,
+            jumlahBarang: jumlahBarang,
+            hargaSatuan: hargaSatuan,
+          ),
+        ),
+      );
+    } else {
+      if (selectedDate == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Tanggal transaksi harus diisi')),
+        );
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    jumlahController.addListener(_updateTotalHarga);
+  }
+
+  void _updateTotalHarga() {
+    if (selectedJenisBarang != null &&
+        hargaBarang.containsKey(selectedJenisBarang)) {
+      int jumlah = int.tryParse(jumlahController.text) ?? 0;
+      int hargaSatuan = hargaBarang[selectedJenisBarang] ?? 0;
+      int totalHarga = jumlah * hargaSatuan;
+      hargaController.text = totalHarga.toString();
+    }
+  }
+
+  @override
+  void dispose() {
+    jumlahController.removeListener(_updateTotalHarga);
+    jumlahController.dispose();
+    hargaController.dispose();
+    super.dispose();
+  }
