@@ -61,6 +61,31 @@ class DetailBarangPage extends StatelessWidget {
               ),
               buildDetailRow('Jenis Barang', jenisBarang),
               buildDetailRow('Jumlah Barang', jumlahBarang.toString()),
+              buildDetailRow(
+                'Jenis Harga Satuan',
+                currencyFormat.format(hargaSatuan),
+              ),
+              buildDetailRow('Total Harga', currencyFormat.format(totalHarga)),
+              const Spacer(),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF343A7C),
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: const Text(
+                    'Selesai',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
