@@ -92,4 +92,34 @@ class DetailBarangPage extends StatelessWidget {
       ),
     );
   }
+  Widget buildDetailRow(String title, String value) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  value,
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Divider(thickness: 1, color: Colors.black12),
+      ],
+    );
+  }
 }
