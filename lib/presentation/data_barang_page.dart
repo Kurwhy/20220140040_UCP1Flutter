@@ -216,6 +216,48 @@ class _DataBarangPageState extends State<DataBarangPage> {
                   validator:
                       (value) => value == null ? 'Pilih jenis barang' : null,
                 ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: jumlahController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Jumlah Barang',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        validator:
+                            (value) =>
+                                value == null || value.isEmpty
+                                    ? 'Masukkan jumlah barang'
+                                    : null,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: TextFormField(
+                        controller: hargaController,
+                        keyboardType: TextInputType.number,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          prefixText: 'Rp. ',
+                          labelText: 'Harga Satuan',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        validator:
+                            (value) =>
+                                value == null || value.isEmpty
+                                    ? 'Masukkan harga satuan'
+                                    : null,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
