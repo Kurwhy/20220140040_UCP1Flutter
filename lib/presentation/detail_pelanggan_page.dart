@@ -65,9 +65,29 @@ class DetailPelangganPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 60),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF343A7C),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 160,
+                  vertical: 18,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              child: const Text(
+                'Selesai',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+  
 }
