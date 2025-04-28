@@ -14,6 +14,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 const SizedBox(height: 30),
@@ -35,6 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 30),
               ],
             ),
+          ),
         ),
       ),
     );
