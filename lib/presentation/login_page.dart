@@ -105,6 +105,35 @@ class _LoginPageState extends State<LoginPage> {
                             ? "Silakan masukkan password"
                             : null,
               ),
+              const SizedBox(height: 30),
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF343A7C),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 4,
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Akun belum terdaftar. Silakan daftar terlebih dahulu.',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    "Masuk",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
