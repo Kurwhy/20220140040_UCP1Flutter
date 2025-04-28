@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/presentation/detail_piket_page.dart';
 
 class DataPiketPage extends StatefulWidget {
   final String nama;
@@ -135,77 +136,84 @@ class _DataPiketPageState extends State<DataPiketPage> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
-                const SizedBox(height: 24),
-                const Center(
+              ],
+            ),
+            const SizedBox(height: 24),
+            const Center(
+              child: Text(
+                'Daftar Tugas Piket',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 16),
+            tugasPiketList.isEmpty
+                ? const Center(
                   child: Text(
-                    'Daftar Tugas Piket',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    'Belum ada Data',
+                    style: TextStyle(color: Color(0xFF343A7C)),
                   ),
-                ),
-                const SizedBox(height: 16),
-                tugasPiketList.isEmpty
-                    ? const Center(
-                      child: Text(
-                        'Belum ada Data',
-                        style: TextStyle(color: Color(0xFF343A7C)),
-                      ),
-                    )
-                    : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: tugasPiketList.length,
-                      itemBuilder: (context, index) {
-                        final tugas = tugasPiketList[index];
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              // belum diarahkan ke halaman detail
-                            );
-                          },
-                          child: Card(
-                            color: Color(0xFF343A7C),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 20,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      tugas['tugas'] ?? '',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  const Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.white,
-                                    size: 16,
-                                  ),
-                                ],
-                              ),
-                            ),
+                )
+                : ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: tugasPiketList.length,
+                  itemBuilder: (context, index) {
+                    final tugas = tugasPiketList[index];
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => DetailPiketPage(
+                                  nama: tugas['nama'] ?? '',
+                                  tanggal: tugas['tanggal'] ?? '',
+                                  tugas: tugas['tugas'] ?? '',
+                                ),
                           ),
                         );
                       },
-                    ),
-              ],
-            ),
+                      child: Card(
+                        color: Color(0xFF343A7C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 20,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  tugas['tugas'] ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
           ],
         ),
       ),
     );
   }
+
   void _pickDate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
