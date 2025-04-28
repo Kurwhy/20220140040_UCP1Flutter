@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/presentation/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -143,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(
                         builder:
                             (context) =>
-                                const Placeholder(),
+                                const RegisterPage(),
                       ),
                     );
                   },
