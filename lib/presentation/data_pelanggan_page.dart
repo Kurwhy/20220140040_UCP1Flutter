@@ -86,5 +86,23 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
     );
   }
 
-  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF343A7C),
+        centerTitle: true,
+        title: const Text(
+          'Data Pelanggan',
+          style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  }
 }
