@@ -42,13 +42,14 @@ class _DataBarangPageState extends State<DataBarangPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailBarangPage(
-            tanggal: selectedDate!,
-            jenisTransaksi: selectedJenisTransaksi!,
-            jenisBarang: selectedJenisBarang!,
-            jumlahBarang: jumlahBarang,
-            hargaSatuan: hargaSatuan,
-          ),
+          builder:
+              (context) => DetailBarangPage(
+                tanggal: selectedDate!,
+                jenisTransaksi: selectedJenisTransaksi!,
+                jenisBarang: selectedJenisBarang!,
+                jumlahBarang: jumlahBarang,
+                hargaSatuan: hargaSatuan,
+              ),
         ),
       );
     } else {
@@ -83,7 +84,7 @@ class _DataBarangPageState extends State<DataBarangPage> {
     hargaController.dispose();
     super.dispose();
   }
-  
+
   Future<void> _pickDate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -97,3 +98,36 @@ class _DataBarangPageState extends State<DataBarangPage> {
       });
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFDF7F5),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF343A7C),
+        centerTitle: true,
+        title: const Text(
+          'Pendataan Barang',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
