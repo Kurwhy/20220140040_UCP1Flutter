@@ -206,4 +206,38 @@ class _DataPiketPageState extends State<DataPiketPage> {
       ),
     );
   }
+  void _pickDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      setState(() {
+        _selectedDate = picked;
+        _tanggalError = false;
+      });
+    }
+  }
+
+  void _addTugas() {
+    setState(() {
+      _namaError = _namaController.text.isEmpty;
+      _tanggalError = _selectedDate == null;
+      _tugasError = _tugasController.text.isEmpty;
+    });
+
+    if (!_namaError && !_tanggalError && !_tugasError) {
+      setState(() {
+        tugasPiketList.add({
+          'nama': _namaController.text,
+          'tanggal':
+              '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
+          'tugas': _tugasController.text,
+        });
+        _tugasController.clear();
+      });
+    }
+  }
 }
