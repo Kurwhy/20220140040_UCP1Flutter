@@ -62,4 +62,20 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
     }
     return null;
   }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      validator: (value) => _validateField(value, label),
+    );
+  }
 }
