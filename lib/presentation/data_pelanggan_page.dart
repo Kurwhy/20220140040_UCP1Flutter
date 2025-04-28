@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'detail_pelanggan_page.dart';
+import 'package:ucp_1/presentation/detail_pelanggan_page.dart';
 
 class DataPelangganPage extends StatefulWidget {
-  const DataPelangganPage({Key? key}) : super(key: key);
+  const DataPelangganPage({super.key});
 
   @override
-  _DataPelangganPageState createState() => _DataPelangganPageState();
+  State<DataPelangganPage> createState() => _DataPelangganPageState();
 }
 
 class _DataPelangganPageState extends State<DataPelangganPage> {
@@ -29,7 +29,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
   }
 
   void _simpanData() {
-    if (_formKey.currentState?.validate() ?? false) {
+    if (_formKey.currentState!.validate()) {
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -47,18 +47,19 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
     }
   }
 
-  String? _validateField(String? value, String fieldName) {
+  String? _validateField(String label, String? value) {
     if (value == null || value.isEmpty) {
-      return '$fieldName tidak boleh kosong';
+      return '$label tidak boleh kosong';
     }
-    if (fieldName == 'Email' && !value.contains('@')) {
+    if (label == 'Email' &&
+        !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
       return 'Format email tidak valid';
     }
-    if (fieldName == 'No HP' && value.length < 10) {
-      return 'Nomor HP tidak valid';
+    if (label == 'No Hp' && !RegExp(r'^[0-9]{10,15}$').hasMatch(value)) {
+      return 'No Hp harus angka 10-15 digit';
     }
-    if (fieldName == 'Kode Pos' && value.length != 5) {
-      return 'Kode Pos harus 5 digit';
+    if (label == 'Kode Pos' && !RegExp(r'^[0-9]{5}$').hasMatch(value)) {
+      return 'Kode Pos harus 5 digit angka';
     }
     return null;
   }
@@ -101,6 +102,97 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
           onPressed: () {
             Navigator.pop(context);
           },
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              _buildTextField(
+                label: 'Nama Pelanggan',
+                controller: _namaController,
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTextField(
+                      label: 'Email',
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: _buildTextField(
+                      label: 'No Hp',
+                      controller: _noHpController,
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              _buildTextField(label: 'Alamat', controller: _alamatController),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTextField(
+                      label: 'Provinsi',
+                      controller: _provinsiController,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: _buildTextField(
+                      label: 'Kode Pos',
+                      controller: _kodePosController,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _simpanData,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF343A7C),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 170,
+                    vertical: 20,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text(
+                  'Simpan',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              const SizedBox(height: 16),
+              OutlinedButton(
+                onPressed: _resetForm,
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Color(0xFF343A7C)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 175,
+                    vertical: 20,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text(
+                  'Reset',
+                  style: TextStyle(color: Color(0xFF343A7C)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
