@@ -134,6 +134,34 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 20),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) =>
+                                const Placeholder(),
+                      ),
+                    );
+                  },
+                  child: const Text.rich(
+                    TextSpan(
+                      text: "Belum memiliki akun? ",
+                      style: TextStyle(color: Colors.black87),
+                      children: [
+                        TextSpan(
+                          text: "Daftar disini!",
+                          style: TextStyle(color: Color(0xFF343A7C)),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
