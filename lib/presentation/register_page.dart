@@ -21,7 +21,20 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
-          child: Container(), // kosong dulu
+          child: Form(
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                Center(
+                  child: Image.asset('assets/images/cimory.png', height: 200),
+                ),
+                const Text(
+                  'DAFTAR AKUN BARU',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 30),
+              ],
+            ),
         ),
       ),
     );
