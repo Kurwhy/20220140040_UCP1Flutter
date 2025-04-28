@@ -45,6 +45,22 @@ class DetailBarangPage extends StatelessWidget {
                   size: 130,
                 ),
               ),
+              const SizedBox(height: 24),
+              const Text(
+                'Data Berhasil Disimpan',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              buildDetailRow(
+                'Tanggal',
+                DateFormat('EEEE, dd MMMM yyyy', 'id_ID').format(tanggal),
+              ),
+              buildDetailRow(
+                'Jenis Transaksi',
+                jenisTransaksi == 'Masuk' ? 'Barang Masuk' : 'Barang Keluar',
+              ),
+              buildDetailRow('Jenis Barang', jenisBarang),
+              buildDetailRow('Jumlah Barang', jumlahBarang.toString()),
             ],
           ),
         ),
