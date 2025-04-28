@@ -8,6 +8,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -34,6 +36,33 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.black87,
                   ),
                 ),
+              ),
+
+              const SizedBox(height: 40),
+              const Text(
+                "Email",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 12),
+              TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email, color: Colors.black),
+                  labelText: "Email",
+                  labelStyle: const TextStyle(color: Colors.black),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
+                ),
+                validator:
+                    (value) =>
+                        value == null || value.isEmpty
+                            ? "Silakan masukkan email"
+                            : null,
               ),
             ],
           ),
