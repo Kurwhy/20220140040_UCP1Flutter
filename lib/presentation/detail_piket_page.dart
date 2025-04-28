@@ -65,6 +65,24 @@ class DetailPiketPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 24),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              decoration: BoxDecoration(
+                color: Color(0xFF343A7C),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                tugas,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),
