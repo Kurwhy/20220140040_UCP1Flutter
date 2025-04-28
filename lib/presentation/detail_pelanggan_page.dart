@@ -17,3 +17,22 @@ class DetailPelangganPage extends StatelessWidget {
     required this.provinsi,
     required this.kodePos,
   });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF343A7C),
+        centerTitle: true,
+        title: Text(
+          'Detail $nama',
+          style: const TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+}
